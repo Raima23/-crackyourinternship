@@ -1,0 +1,19 @@
+class Solution
+{
+    public long findMinDiff (ArrayList<Integer> a, int n, int m)
+    {
+        // your code here
+        int j=0;
+        int[]arr=new int[a.size()];
+        for (int i:a){
+            arr[j]=i;
+            j++;
+        }
+        Arrays.sort(arr);
+        int ans=Integer.MAX_VALUE;
+        for(int i=m-1;i<arr.length;i++){
+            ans=Math.min(ans,arr[i]-arr[i-m-1]);
+        }
+        return ans;
+    }
+}
