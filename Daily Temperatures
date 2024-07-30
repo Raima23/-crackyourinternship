@@ -1,0 +1,15 @@
+class Solution {
+    public int[] dailyTemperatures(int[] temperatures) {
+        int []ans=new int[temperatures.length];
+        ans[temperatures.length-1]=0;
+        int x=0;
+        for(int i=temperatures.length-2;i>=0;i--){
+            if(temperatures[i]<temperatures[i+1]){
+                ans[i]=x;
+                x=0;
+            }
+            x+=1;
+        }
+        return ans;
+    }
+}
