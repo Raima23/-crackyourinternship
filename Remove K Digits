@@ -1,0 +1,24 @@
+class Solution {
+    public static String removeKdigits(String num, int k) {
+        if (k == num.length()) return "0";
+
+        StringBuilder stack = new StringBuilder();
+        int removalCount = k;
+
+        for (char digit : num.toCharArray()) {
+            while (removalCount > 0 && stack.length() > 0 && stack.charAt(stack.length() - 1) > digit) {
+                stack.deleteCharAt(stack.length() - 1);
+                removalCount--;
+            }
+            stack.append(digit);
+        }
+
+        stack.setLength(stack.length() - removalCount);
+
+        while (stack.length() > 0 && stack.charAt(0) == '0') {
+            stack.deleteCharAt(0);
+        }
+
+        return stack.length() == 0 ? "0" : stack.toString();
+    }
+}
